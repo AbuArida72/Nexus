@@ -21,6 +21,7 @@ import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -28,6 +29,7 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
+  const navigate = useNavigate();
   const Author = ({ image, name, email }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -53,8 +55,10 @@ export default function data() {
     columns: [
       {
         Header: () => (
-          <Link
-            to="./dispute-pages/DisputePage.js"
+          <button
+            onClick={() => {
+              navigate("./dispute-pages/DisputePage");
+            }}
             style={{
               display: "inline-block",
               padding: "10px 20px",
@@ -69,7 +73,7 @@ export default function data() {
             rel="noopener noreferrer"
           >
             Report Dispute
-          </Link>
+          </button>
         ),
         accessor: "author",
         width: "45%",
