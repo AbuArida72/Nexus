@@ -20,6 +20,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
+import { Link } from "react-router-dom";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -52,9 +53,9 @@ export default function data() {
     columns: [
       {
         Header: () => (
-          <a href="./dispute-pages" rel="noopener noreferrer">
+          <Link to="./dispute-pages/DisputePage.js" rel="noopener noreferrer">
             Report Dispute
-          </a>
+          </Link>
         ),
         accessor: "author",
         width: "45%",
