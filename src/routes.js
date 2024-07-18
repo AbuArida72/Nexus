@@ -38,6 +38,9 @@ Coded by www.creative-tim.com
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
 import Cases from "layouts/cases";
+import Profile from "layouts/profile";
+import SignIn from "layouts/authentication/sign-in";
+
 // @mui icons
 import Icon from "@mui/material/Icon";
 
