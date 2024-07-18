@@ -1,17 +1,4 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+//disputes categories sidebar in dashboard
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -29,7 +16,7 @@ function OrdersOverview() {
     <Card sx={{ height: "100%" }}>
       <MDBox pt={3} px={3}>
         <MDTypography variant="h6" fontWeight="medium">
-          Orders overview
+          Disputes Categories
         </MDTypography>
         <MDBox mt={0} mb={2}>
           <MDTypography variant="button" color="text" fontWeight="regular">
@@ -48,32 +35,32 @@ function OrdersOverview() {
         <TimelineItem
           color="success"
           icon="notifications"
-          title="$2400, Design changes"
-          dateTime="22 DEC 7:20 PM"
+          title="200JD, Transfer to Friend"
+          dateTime="current month"
         />
         <TimelineItem
           color="error"
           icon="inventory_2"
-          title="New order #1832412"
-          dateTime="21 DEC 11 PM"
+          title="300JD, Transfer to Self"
+          dateTime="current month"
         />
         <TimelineItem
           color="info"
           icon="shopping_cart"
-          title="Server payments for April"
-          dateTime="21 DEC 9:34 PM"
+          title="500JD, Invoice Payment"
+          dateTime="current month"
         />
         <TimelineItem
           color="warning"
           icon="payment"
-          title="New card added for order #4395133"
-          dateTime="20 DEC 2:20 AM"
+          title="400JD, eWallets"
+          dateTime="current month"
         />
         <TimelineItem
           color="primary"
           icon="vpn_key"
-          title="New card added for order #4395133"
-          dateTime="18 DEC 4:54 AM"
+          title="600JD, Loan Payment"
+          dateTime="current month"
           lastItem
         />
       </MDBox>

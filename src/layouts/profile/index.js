@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 /**
 =========================================================
 * Material Dashboard 2 React - v2.2.0
 =========================================================
->>>>>>> parent of cd63328 (edits)
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
 * Copyright 2023 Creative Tim (https://www.creative-tim.com)
@@ -49,9 +46,9 @@ import homeDecor1 from "assets/images/home-decor-1.jpg";
 import homeDecor2 from "assets/images/home-decor-2.jpg";
 import homeDecor3 from "assets/images/home-decor-3.jpg";
 import homeDecor4 from "assets/images/home-decor-4.jpeg";
-import team1 from "assets/images/team-1.jpg";
+import team1 from "assets/images/team-1.png";
 import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
+import team3 from "assets/images/team-3.png";
 import team4 from "assets/images/team-4.jpg";
 
 function Overview() {

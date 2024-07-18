@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
+import team3 from "assets/images/team-3.png";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
@@ -53,27 +53,9 @@ export default function data() {
     columns: [
       {
         Header: () => (
-<<<<<<< HEAD
-          <Link
-            to="./dispute-pages/DisputePage.js"
-            style={{
-              display: "inline-block",
-              padding: "10px 20px",
-              fontSize: "16px",
-              color: "#fff",
-              backgroundColor: "#007bff",
-              borderRadius: "4px",
-              textAlign: "center",
-              textDecoration: "none",
-              transition: "background-color 0.3s",
-            }}
-            rel="noopener noreferrer"
-          >
-=======
           <a href="./dispute-pages" rel="noopener noreferrer">
->>>>>>> parent of cd63328 (edits)
             Report Dispute
-          </Link>
+          </a>
         ),
         accessor: "author",
         width: "45%",
