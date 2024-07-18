@@ -40,7 +40,6 @@ import Dashboard from "layouts/dashboard";
 import Cases from "layouts/cases";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
-//import Dispute from "layouts/dispute-pages";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -61,14 +60,6 @@ const routes = [
     route: "/cases",
     component: <Cases />,
   },
-  // {
-  //   type: "collapse",
-  //   name: "Dispute",
-  //   key: "dispute-pages",
-  //   icon: <Icon fontSize="small">dashboard</Icon>,
-  //   route: "/dispute-pages",
-  //   component: <Dispute />,
-  // },
   {
     type: "collapse",
     name: "Profile",

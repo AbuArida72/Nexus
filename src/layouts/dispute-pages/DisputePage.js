@@ -2,7 +2,6 @@
 import React from 'react';
 import './dispute.css';
 
-
 const DisputePage = () => {
   return (
     <div className="dispute-container">

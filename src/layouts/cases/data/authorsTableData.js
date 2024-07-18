@@ -20,6 +20,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
+import { Link } from "react-router-dom";
 
 // Images
 import team2 from "assets/images/team-2.jpg";
@@ -52,9 +53,27 @@ export default function data() {
     columns: [
       {
         Header: () => (
-          <a href="google.com" rel="noopener noreferrer">
+<<<<<<< HEAD
+          <Link
+            to="./dispute-pages/DisputePage.js"
+            style={{
+              display: "inline-block",
+              padding: "10px 20px",
+              fontSize: "16px",
+              color: "#fff",
+              backgroundColor: "#007bff",
+              borderRadius: "4px",
+              textAlign: "center",
+              textDecoration: "none",
+              transition: "background-color 0.3s",
+            }}
+            rel="noopener noreferrer"
+          >
+=======
+          <a href="./dispute-pages" rel="noopener noreferrer">
+>>>>>>> parent of cd63328 (edits)
             Report Dispute
-          </a>
+          </Link>
         ),
         accessor: "author",
         width: "45%",
