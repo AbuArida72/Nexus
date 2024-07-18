@@ -37,7 +37,7 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
+import Cases from "layouts/cases";
 import Billing from "layouts/billing";
 import RTL from "layouts/rtl";
 import Notifications from "layouts/notifications";
@@ -59,11 +59,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
+    name: "Cases",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/cases",
+    component: <Cases />,
   },
   {
     type: "collapse",
