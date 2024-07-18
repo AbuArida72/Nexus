@@ -53,7 +53,21 @@ export default function data() {
     columns: [
       {
         Header: () => (
-          <Link to="./dispute-pages/DisputePage.js" rel="noopener noreferrer">
+          <Link
+            to="./dispute-pages/DisputePage.js"
+            style={{
+              display: "inline-block",
+              padding: "10px 20px",
+              fontSize: "16px",
+              color: "#fff",
+              backgroundColor: "#007bff",
+              borderRadius: "4px",
+              textAlign: "center",
+              textDecoration: "none",
+              transition: "background-color 0.3s",
+            }}
+            rel="noopener noreferrer"
+          >
             Report Dispute
           </Link>
         ),
