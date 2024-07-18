@@ -50,7 +50,16 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "author", accessor: "author", width: "45%", align: "left" },
+      {
+        Header: () => (
+          <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
+            Report Dispute
+          </a>
+        ),
+        accessor: "author",
+        width: "45%",
+        align: "left",
+      },
       { Header: "function", accessor: "function", align: "left" },
       { Header: "status", accessor: "status", align: "center" },
       { Header: "employed", accessor: "employed", align: "center" },
