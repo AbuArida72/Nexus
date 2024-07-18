@@ -52,7 +52,7 @@ export default function data() {
     columns: [
       {
         Header: () => (
-          <a href="./dispute-pages" rel="noopener noreferrer">
+          <a href="google.com" rel="noopener noreferrer">
             Report Dispute
           </a>
         ),
