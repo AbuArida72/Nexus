@@ -1,0 +1,49 @@
+/* Dispute.css */
+.dispute-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .option-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+  }
+  
+  .option-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  @media (min-width: 600px) {
+    .options-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .option-button {
+      width: auto;
+      flex: 1;
+      margin: 0 10px;
+    }
+  }
+  
