@@ -55,7 +55,7 @@ const routes = [
   {
     type: "collapse",
     name: "Cases",
-    key: "cses",
+    key: "cases",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/cases",
     component: <Cases />,
