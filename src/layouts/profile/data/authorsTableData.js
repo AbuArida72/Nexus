@@ -21,6 +21,9 @@ import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Menu, MenuItem, IconButton } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 // Images
 import team1 from "assets/images/team-1.png";
@@ -28,6 +31,38 @@ import team3 from "assets/images/team-3.png";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [rows, setRows] = useState([
+    {
+      author: { image: team4, name: "Ibrahim Abu Laban", email: "079 9 24 2452" },
+      function: { title: "Motaz Ghassan", description: "Agent" },
+      status: "Active",
+      employed: "04/07/2024",
+    },
+    {
+      author: { image: team1, name: "Abdulrahman Atassi", email: "079 9 24 2452" },
+      function: { title: "Self-Report", description: "App" },
+      status: "Pending",
+      employed: "13/07/2024",
+    },
+  ]);
+
+  const handleMenuClick = (event, index) => {
+    setAnchorEl(event.currentTarget);
+    setSelectedRow(index);
+  };
+
+  const handleMenuClose = (option) => {
+    if (option && selectedRow !== null) {
+      const updatedRows = [...rows];
+      updatedRows[selectedRow].status = option;
+      setRows(updatedRows);
+    }
+    setAnchorEl(null);
+    setSelectedRow(null);
+  };
+
   const Author = ({ image, name, email }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
       <MDAvatar src={image} name={name} size="sm" />
@@ -58,50 +93,42 @@ export default function data() {
         align: "left",
       },
       { Header: "Agent", accessor: "function", align: "left" },
-      { Header: "status", accessor: "status", align: "center" },
+      { Header: "Status", accessor: "status", align: "center" },
       { Header: "Date Reported", accessor: "employed", align: "center" },
       { Header: "Summary", accessor: "action", align: "center" },
     ],
 
-    rows: [
-      {
-        author: <Author image={team4} name="Ibrahim Abu Laban" Phone Number="079 9 24 2452" />,
-        function: <Job title="Motaz Ghassan" description="Agent" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Active" color="success" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            04/07/2024
-          </MDTypography>
-        ),
-        action: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            More
-          </MDTypography>
-        ),
-      },
-      {
-        author: <Author image={team1} name="Abdulrahman Atassi" Phone Number="079 9 24 2452" />,
-        function: <Job title="Self-Report" description="App" />,
-        status: (
-          <MDBox ml={-1}>
-            <MDBadge badgeContent="Pending" color="dark" variant="gradient" size="sm" />
-          </MDBox>
-        ),
-        employed: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            13/07/2024
-          </MDTypography>
-        ),
-        action: (
-          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            More
-          </MDTypography>
-        ),
-      },
-    ],
+    rows: rows.map((row, index) => ({
+      author: <Author {...row.author} />,
+      function: <Job {...row.function} />,
+      status: (
+        <MDBox ml={-1}>
+          <MDBadge
+            badgeContent={row.status}
+            color={row.status === "Active" ? "success" : "dark"}
+            variant="gradient"
+            size="sm"
+          />
+        </MDBox>
+      ),
+      employed: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {row.employed}
+        </MDTypography>
+      ),
+      action: (
+        <>
+          <IconButton onClick={(event) => handleMenuClick(event, index)}>
+            <MoreVertIcon />
+          </IconButton>
+          <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => handleMenuClose(null)}>
+            <MenuItem onClick={() => handleMenuClose("Resolved")}>Resolve</MenuItem>
+            <MenuItem onClick={() => handleMenuClose("Declined")}>Decline</MenuItem>
+            <MenuItem onClick={() => handleMenuClose("Resigned")}>Resign</MenuItem>
+            <MenuItem onClick={() => handleMenuClose("Replied")}>Reply</MenuItem>
+          </Menu>
+        </>
+      ),
+    })),
   };
 }
