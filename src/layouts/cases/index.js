@@ -1,19 +1,7 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+// src/DisputePage.js
+import React from "react";
+import "./dispute.css";
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
@@ -24,52 +12,47 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
-import DataTable from "examples/Tables/DataTable";
 
-// Data
-import authorsTableData from "layouts/cases/data/authorsTableData";
-
-function Tables() {
-  const { columns, rows } = authorsTableData();
-
+const DisputePage = () => {
   return (
-    <DashboardLayout>
-      <DashboardNavbar />
-      <MDBox pt={6} pb={3}>
-        <Grid container spacing={6}>
-          <Grid item xs={12}>
-            <Card>
-              <MDBox
-                mx={2}
-                mt={-3}
-                py={3}
-                px={2}
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-              >
-                <MDTypography variant="h6" color="white">
-                  Dispute Table
-                </MDTypography>
-              </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
-              </MDBox>
-            </Card>
-          </Grid>
-        </Grid>
+    <MDBox className="container">
+      <h1>Dispute Management System</h1>
+      {/* <MDBox className="user-info">
+      <p><strong>Name:</strong> Lara Larvana</p>
+      <p><strong>National ID:</strong> 2008546780</p>
+      <p><strong>Mobile number:</strong> 123456</p>
+      </MDBox> */}
+      <MDBox className="dispute-type-buttons">
+        <button className={ `dispute-btn ${disputeType === 'beneficiary' ? 'btn-active' : '' }`} onClick={() => handleDisputeTypeChange( 'beneficiary' )}>
+          Beneficiary account not credited
+        </button>
+        <button className={`dispute-btn ${disputeType === 'misdirected' ? 'btn-active' : ''}`} onClick={() => handleDisputeTypeChange('misdirected')}>
+          Misdirected payment
+        </button>
+        <button className={`dispute-btn ${disputeType === 'alias' ? 'btn-active' : ''}`} onClick={() => handleDisputeTypeChange('alias')}>
+          Alias mobile number is used by the wrong customer
+        </button>
       </MDBox>
-      <Footer />
-    </DashboardLayout>
+      <MDBox className="form-section">
+        <label htmlFor="disputeSelect" className="form-label">Select Dispute</label>
+        <select
+          id="disputeSelect"
+          className="form-control"
+          onChange={handleDisputeChange}
+          value={selectedDispute}
+          disabled={isDropdownDisabled}
+        >
+          <option value="">-- Select Dispute --</option>
+          {disputeOptions.map((option, index) => (
+            <option key={index} value={option.MESSAGE_ID}>
+              {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
+            </option>
+          ))}
+        </select>
+      </MDBox>
+      <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+    </MDBox>
   );
-}
+};
 
-export default Tables;
+export default DisputePage;

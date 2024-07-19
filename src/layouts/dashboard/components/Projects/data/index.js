@@ -23,15 +23,15 @@ import MDAvatar from "components/MDAvatar";
 import MDProgress from "components/MDProgress";
 
 // Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
-import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
-import logoSlack from "assets/images/small-logos/logo-slack.svg";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import logoJira from "assets/images/small-logos/logo-jira.svg";
-import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import team1 from "assets/images/team-1.jpg";
+import logoXD from "assets/images/team-1.png";
+import logoAtlassian from "assets/images/team-2.jpg";
+import logoSlack from "assets/images/team-1.png";
+import logoSpotify from "assets/images/team-4.jpg";
+import logoJira from "assets/images/team-4.jpg";
+import logoInvesion from "assets/images/team-1.png";
+import team1 from "assets/images/team-1.png";
 import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
+import team3 from "assets/images/team-3.png";
 import team4 from "assets/images/team-4.jpg";
 
 export default function data() {
@@ -71,93 +71,68 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
+      { Header: "beneficiary", accessor: "companies", width: "45%", align: "left" },
+      { Header: "Banks", accessor: "members", width: "10%", align: "left" },
+      { Header: "Value", accessor: "budget", align: "center" },
       { Header: "completion", accessor: "completion", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
+        companies: <Company image={logoXD} name="Ibrahim Abdelkhaleq" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
+              [team1, "Jordan Kuwait Bank"],
+              [team2, "Arab Bank"],
             ])}
           </MDBox>
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
+            300JD
           </MDTypography>
         ),
         completion: (
           <MDBox width="8rem" textAlign="left">
-            <MDProgress value={60} color="info" variant="gradient" label={false} />
+            <MDProgress value={100} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
+        companies: <Company image={logoAtlassian} name="Mohammad Abu Arida" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team2, "Romina Hadid"],
-              [team4, "Jessica Doe"],
+              [team2, "Arab Bank"],
+              [team4, "Housing Bank"],
             ])}
           </MDBox>
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
+            100JD
           </MDTypography>
         ),
         completion: (
           <MDBox width="8rem" textAlign="left">
-            <MDProgress value={10} color="info" variant="gradient" label={false} />
+            <MDProgress value={100} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
+        companies: <Company image={logoSlack} name="Abdelrahman Alsadder" />,
         members: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
+              [team1, "Jordan Kuwait Bank"],
+              [team3, "Safwa Bank"],
             ])}
           </MDBox>
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
-              [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
+            500JD
           </MDTypography>
         ),
         completion: (
@@ -167,41 +142,59 @@ export default function data() {
         ),
       },
       {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
+        companies: <Company image={logoSpotify} name="Khalil Samara" />,
         members: (
           <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
+            {avatars([[team4, "Housing Bank"]])}
           </MDBox>
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $500
+            700JD
+          </MDTypography>
+        ),
+        completion: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={100} color="success" variant="gradient" label={false} />
+          </MDBox>
+        ),
+      },
+      {
+        companies: <Company image={logoJira} name="Ibrahim Abu Laban" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([[team4, "Housing Bank"]])}
+          </MDBox>
+        ),
+        budget: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            1000JD
+          </MDTypography>
+        ),
+        completion: (
+          <MDBox width="8rem" textAlign="left">
+            <MDProgress value={50} color="info" variant="gradient" label={false} />
+          </MDBox>
+        ),
+      },
+      {
+        companies: <Company image={logoInvesion} name="Abdulrahman Atassi" />,
+        members: (
+          <MDBox display="flex" py={1}>
+            {avatars([
+              [team1, "Jordan Kuwait Bank"],
+              [team4, "Housing Bank"],
+            ])}
+          </MDBox>
+        ),
+        budget: (
+          <MDTypography variant="caption" color="text" fontWeight="medium">
+            50JD
           </MDTypography>
         ),
         completion: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={25} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $2,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={40} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },

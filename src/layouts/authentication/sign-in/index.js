@@ -103,4 +103,3 @@ function Basic() {
 }
 
 export default Basic;
-//export default SignInButton;

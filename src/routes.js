@@ -38,7 +38,7 @@ Coded by www.creative-tim.com
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
 import Cases from "layouts/cases";
-import Profile from "layouts/profile";
+import Disputes from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -54,7 +54,7 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Cases",
+    name: "Register Dispute",
     key: "cases",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/cases",
@@ -62,11 +62,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Profile",
+    name: "Active Disputes",
     key: "profile",
     icon: <Icon fontSize="small">person</Icon>,
     route: "/profile",
-    component: <Profile />,
+    component: <Disputes />,
   },
   {
     type: "collapse",
