@@ -1,19 +1,7 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+// src/DisputePage.js
+import React from "react";
+import "./dispute.css";
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
@@ -24,15 +12,8 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
-import DataTable from "examples/Tables/DataTable";
 
-// Data
-import authorsTableData from "layouts/cases/data/authorsTableData";
-
-function Tables() {
-  const { columns, rows } = authorsTableData();
-
+const DisputePage = () => {
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -50,18 +31,14 @@ function Tables() {
                 borderRadius="lg"
                 coloredShadow="info"
               >
-                <MDTypography variant="h6" color="white">
-                  Dispute Table
+                <MDTypography variant="h4" color="white" align="center">
+                  Choose Dispute Type
                 </MDTypography>
-              </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
+                <MDBox>
+                  <button>Beneficiary Account Not Credited</button>
+                  <button>Misdirected Payment</button>
+                  <button>Alias Mobile Number is Used by the Wrong Customer</button>
+                </MDBox>
               </MDBox>
             </Card>
           </Grid>
@@ -69,6 +46,6 @@ function Tables() {
       </MDBox>
     </DashboardLayout>
   );
-}
+};
 
-export default Tables;
+export default DisputePage;

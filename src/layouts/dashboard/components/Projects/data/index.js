@@ -111,7 +111,7 @@ export default function data() {
         ),
         budget: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            100jd
+            100JD
           </MDTypography>
         ),
         completion: (
