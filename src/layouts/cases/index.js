@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
+import "./dispute.css";
+import MDTypography from "components/MDTypography";
 
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -15,7 +17,9 @@ const DisputePage = () => {
   const [selectedDispute, setSelectedDispute] = useState("");
   const [disputeType, setDisputeType] = useState("");
   const [isDropdownDisabled, setIsDropdownDisabled] = useState(true);
-
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [nationalId, setNationalId] = useState("");
+  const [isProceedEnabled, setIsProceedEnabled] = useState(false);
   const handleDisputeChange = (event) => {
     setSelectedDispute(event.target.value);
   };
@@ -40,23 +44,66 @@ const DisputePage = () => {
     }
   };
 
+  const handleCheck = () => {
+    // Simulate phone number validation
+    if (phoneNumber) {
+      setNationalId("2000854684");
+      setIsProceedEnabled(true);
+    } else {
+      alert("Please enter a mobile phone number.");
+    }
+  };
+
   return (
     <DashboardLayout>
+      <MDBox className="container">
+        <MDBox className="auth-section">
+          <h1>User Authentication</h1>
+          <MDBox className="auth-form">
+            <label htmlFor="phoneNumber" className="form-label">
+              Enter Mobile Phone Number:
+            </label>
+            <input
+              type="text"
+              id="phoneNumber"
+              className="form-control"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <button className="check-btn" onClick={handleCheck}>
+              Check
+            </button>
+            <MDBox className="auth-form">
+              <label htmlFor="nationalId" className="form-label">
+                National ID:
+              </label>
+              <input
+                type="text"
+                id="phoneNumber"
+                className="form-control"
+                value={nationalId}
+                disabled
+              />
+              <MDBox mt={3} mb={1}>
+                <MDButton variant="gradient" color="info" fullWidth disabled={!isProceedEnabled}>
+                  Proceed
+                </MDButton>
+              </MDBox>
+            </MDBox>
+          </MDBox>
+        </MDBox>
+      </MDBox>
       <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "100vh" }}>
-        <Grid item xs={12} sm={8} md={6}>
+        <Grid item xs={12} sm={8} md={100}>
           <Card>
             <MDBox p={3} textAlign="center">
-              <h1>Dispute Management System</h1>
+              <MDTypography variant="h2" color="Red">
+                Dispute Request
+              </MDTypography>
               <MDBox mt={3}>
-                <p>
-                  <strong>Name:</strong> Lara Larvana
-                </p>
-                <p>
-                  <strong>National ID:</strong> 2008546780
-                </p>
-                <p>
-                  <strong>Mobile number:</strong> 123456
-                </p>
+                <MDTypography variant="h7" color="Red">
+                  Name : Lara Larvana
+                </MDTypography>
               </MDBox>
               <MDBox mt={3} mb={1}>
                 <MDButton
