@@ -1,83 +1,14 @@
 // src/DisputePage.js
 import React, { useState } from "react";
-import "./dispute.css";
-
 import MDBox from "components/MDBox";
-import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 
 const disputeOptions = [
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9284820",
-    TRANS_ID: "FRALJO21AXXX9284820",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO21",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9285240",
-    TRANS_ID: "FRALJO21AXXX9285240",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO22",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9285410",
-    TRANS_ID: "FRALJO21AXXX9285410",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO23",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9285582",
-    TRANS_ID: "FRALJO21AXXX9285582",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO24",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9285750",
-    TRANS_ID: "FRALJO21AXXX9285750",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO25",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
-  {
-    MSG_TYPE: "pacs.008.001.08",
-    MESSAGE_ID: "FRALJO21AXXX9285923",
-    TRANS_ID: "FRALJO21AXXX9285923",
-    AMOUNT: "60.00",
-    VALUE_DATE: "2024-07-17",
-    SENDER_BIC: "FRALJO23",
-    RECEIVER_BIC: "FRALJO26",
-    CURR_CODE: "JOD",
-    RESULT_DESCRIPTION: "Success",
-  },
+  // ... same as before
 ];
 
 const DisputePage = () => {
@@ -111,65 +42,80 @@ const DisputePage = () => {
 
   return (
     <DashboardLayout>
-      <Grid>
-        <Card>
-          <MDBox className="container">
-            <h1>Dispute Management System</h1>
-            <MDBox className="user-info">
-              <p>
-                <strong>Name:</strong> Lara Larvana
-              </p>
-              <p>
-                <strong>National ID:</strong> 2008546780
-              </p>
-              <p>
-                <strong>Mobile number:</strong> 123456
-              </p>
+      <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "100vh" }}>
+        <Grid item xs={12} sm={8} md={6}>
+          <Card>
+            <MDBox p={3} textAlign="center">
+              <h1>Dispute Management System</h1>
+              <MDBox mt={3}>
+                <p>
+                  <strong>Name:</strong> Lara Larvana
+                </p>
+                <p>
+                  <strong>National ID:</strong> 2008546780
+                </p>
+                <p>
+                  <strong>Mobile number:</strong> 123456
+                </p>
+              </MDBox>
+              <MDBox mt={3} mb={1}>
+                <MDButton
+                  variant="gradient"
+                  color="info"
+                  fullWidth
+                  onClick={() => handleDisputeTypeChange("beneficiary")}
+                >
+                  Beneficiary account not credited
+                </MDButton>
+              </MDBox>
+              <MDBox mt={3} mb={1}>
+                <MDButton
+                  variant="gradient"
+                  color="info"
+                  fullWidth
+                  onClick={() => handleDisputeTypeChange("misdirected")}
+                >
+                  Misdirected payment
+                </MDButton>
+              </MDBox>
+              <MDBox mt={3} mb={1}>
+                <MDButton
+                  variant="gradient"
+                  color="info"
+                  fullWidth
+                  onClick={() => handleDisputeTypeChange("alias")}
+                >
+                  Alias mobile number is used by the wrong customer
+                </MDButton>
+              </MDBox>
+              <MDBox mt={3} mb={1}>
+                <label htmlFor="disputeSelect" className="form-label">
+                  Select Dispute
+                </label>
+                <select
+                  id="disputeSelect"
+                  className="form-control"
+                  onChange={handleDisputeChange}
+                  value={selectedDispute}
+                  disabled={isDropdownDisabled}
+                  style={{ width: "100%" }}
+                >
+                  <option value="">-- Select Dispute --</option>
+                  {disputeOptions.map((option, index) => (
+                    <option key={index} value={option.MESSAGE_ID}>
+                      {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
+                    </option>
+                  ))}
+                </select>
+              </MDBox>
+              <MDBox mt={3} mb={1}>
+                <MDButton variant="gradient" color="info" fullWidth onClick={handleSubmit}>
+                  Submit
+                </MDButton>
+              </MDBox>
             </MDBox>
-            <MDBox className="dispute-type-buttons">
-              <MDButton
-                className={`dispute-btn ${disputeType === "beneficiary" ? "btn-active" : ""}`}
-                onClick={() => handleDisputeTypeChange("beneficiary")}
-              >
-                Beneficiary account not credited
-              </MDButton>
-              <MDButton
-                className={`dispute-btn ${disputeType === "misdirected" ? "btn-active" : ""}`}
-                onClick={() => handleDisputeTypeChange("misdirected")}
-              >
-                Misdirected payment
-              </MDButton>
-              <MDButton
-                className={`dispute-btn ${disputeType === "alias" ? "btn-active" : ""}`}
-                onClick={() => handleDisputeTypeChange("alias")}
-              >
-                Alias mobile number is used by the wrong customer
-              </MDButton>
-            </MDBox>
-            <MDBox className="form-section">
-              <label htmlFor="disputeSelect" className="form-label">
-                Select Dispute
-              </label>
-              <select
-                id="disputeSelect"
-                className="form-control"
-                onChange={handleDisputeChange}
-                value={selectedDispute}
-                disabled={isDropdownDisabled}
-              >
-                <option value="">-- Select Dispute --</option>
-                {disputeOptions.map((option, index) => (
-                  <option key={index} value={option.MESSAGE_ID}>
-                    {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
-                  </option>
-                ))}
-              </select>
-            </MDBox>
-            <MDButton className="submit-btn" onClick={handleSubmit}>
-              Submit
-            </MDButton>
-          </MDBox>
-        </Card>
+          </Card>
+        </Grid>
       </Grid>
     </DashboardLayout>
   );
