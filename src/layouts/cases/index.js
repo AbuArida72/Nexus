@@ -15,36 +15,43 @@ import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 
 const DisputePage = () => {
   return (
-    <DashboardLayout>
-      <DashboardNavbar />
-      <MDBox pt={6} pb={3}>
-        <Grid container spacing={6}>
-          <Grid item xs={12}>
-            <Card>
-              <MDBox
-                mx={2}
-                mt={-3}
-                py={3}
-                px={2}
-                variant="gradient"
-                bgColor="info"
-                borderRadius="lg"
-                coloredShadow="info"
-              >
-                <MDTypography variant="h4" color="white" align="center">
-                  Choose Dispute Type
-                </MDTypography>
-                <MDBox>
-                  <button>Beneficiary Account Not Credited</button>
-                  <button>Misdirected Payment</button>
-                  <button>Alias Mobile Number is Used by the Wrong Customer</button>
-                </MDBox>
-              </MDBox>
-            </Card>
-          </Grid>
-        </Grid>
+    <MDBox className="container">
+      <h1>Dispute Management System</h1>
+      {/* <MDBox className="user-info">
+      <p><strong>Name:</strong> Lara Larvana</p>
+      <p><strong>National ID:</strong> 2008546780</p>
+      <p><strong>Mobile number:</strong> 123456</p>
+      </MDBox> */}
+      <MDBox className="dispute-type-buttons">
+        <button className={ `dispute-btn ${disputeType === 'beneficiary' ? 'btn-active' : '' }`} onClick={() => handleDisputeTypeChange( 'beneficiary' )}>
+          Beneficiary account not credited
+        </button>
+        <button className={`dispute-btn ${disputeType === 'misdirected' ? 'btn-active' : ''}`} onClick={() => handleDisputeTypeChange('misdirected')}>
+          Misdirected payment
+        </button>
+        <button className={`dispute-btn ${disputeType === 'alias' ? 'btn-active' : ''}`} onClick={() => handleDisputeTypeChange('alias')}>
+          Alias mobile number is used by the wrong customer
+        </button>
       </MDBox>
-    </DashboardLayout>
+      <MDBox className="form-section">
+        <label htmlFor="disputeSelect" className="form-label">Select Dispute</label>
+        <select
+          id="disputeSelect"
+          className="form-control"
+          onChange={handleDisputeChange}
+          value={selectedDispute}
+          disabled={isDropdownDisabled}
+        >
+          <option value="">-- Select Dispute --</option>
+          {disputeOptions.map((option, index) => (
+            <option key={index} value={option.MESSAGE_ID}>
+              {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
+            </option>
+          ))}
+        </select>
+      </MDBox>
+      <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+    </MDBox>
   );
 };
 
