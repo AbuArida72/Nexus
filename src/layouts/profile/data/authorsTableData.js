@@ -20,8 +20,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, MenuItem, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
@@ -30,23 +29,30 @@ import team1 from "assets/images/team-1.png";
 import team3 from "assets/images/team-3.png";
 import team4 from "assets/images/team-4.jpg";
 
-export default function data() {
+const data = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [rows, setRows] = useState([
-    {
-      author: { image: team4, name: "Ibrahim Abu Laban", email: "079 9 24 2452" },
-      function: { title: "Motaz Ghassan", description: "Agent" },
-      status: "Active",
-      employed: "04/07/2024",
-    },
-    {
-      author: { image: team1, name: "Abdulrahman Atassi", email: "079 9 24 2452" },
-      function: { title: "Self-Report", description: "App" },
-      status: "Pending",
-      employed: "13/07/2024",
-    },
-  ]);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    // Mock data simulating API response
+    const mockData = [
+      {
+        author: { image: team4, name: "Ibrahim Abu Laban", email: "079 9 24 2452" },
+        function: { title: "Motaz Ghassan", description: "Agent" },
+        status: "Active",
+        employed: "04/07/2024",
+      },
+      {
+        author: { image: team1, name: "Abdulrahman Atassi", email: "079 9 24 2452" },
+        function: { title: "Self-Report", description: "App" },
+        status: "Pending",
+        employed: "13/07/2024",
+      },
+    ];
+    // Set mock data to rows
+    setRows(mockData);
+  }, []);
 
   const handleMenuClick = (event, index) => {
     setAnchorEl(event.currentTarget);
@@ -131,4 +137,6 @@ export default function data() {
       ),
     })),
   };
-}
+};
+
+export default data;

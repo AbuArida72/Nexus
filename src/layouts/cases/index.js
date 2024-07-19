@@ -1,4 +1,3 @@
-// src/DisputePage.js
 import React, { useState } from "react";
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
@@ -85,6 +84,14 @@ const DisputePage = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [nationalId, setNationalId] = useState("");
   const [isProceedEnabled, setIsProceedEnabled] = useState(false);
+  const [aliasText, setAliasText] = useState("");
+
+  const [messageId, setMessageId] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [date, setDate] = useState("");
+  const [respondent, setRespondent] = useState("");
+  const [reference, setReference] = useState("");
+
   const handleDisputeChange = (event) => {
     setSelectedDispute(event.target.value);
   };
@@ -103,7 +110,15 @@ const DisputePage = () => {
     if (disputeType === "alias" || (selectedDispute && disputeType)) {
       console.log("Selected Dispute:", selectedDispute);
       console.log("Dispute Type:", disputeType);
-      alert(`Dispute submitted:\nDispute ID: ${selectedDispute}\nDispute Type: ${disputeType}`);
+      console.log("Alias Text:", aliasText);
+      console.log("Message ID:", messageId);
+      console.log("Transaction ID:", transactionId);
+      console.log("Date:", date);
+      console.log("Respondent:", respondent);
+      console.log("Reference:", reference);
+      alert(
+        `Dispute submitted:\nDispute ID: ${selectedDispute}\nDispute Type: ${disputeType}\nAlias Text: ${aliasText}\nMessage ID: ${messageId}\nTransaction ID: ${transactionId}\nDate: ${date}\nRespondent: ${respondent}\nReference: ${reference}`
+      );
     } else {
       alert("Please select a dispute and dispute type.");
     }
@@ -170,6 +185,66 @@ const DisputePage = () => {
                   Name : Lara Larvana
                 </MDTypography>
               </MDBox>
+              <MDBox mt={3}>
+                <label htmlFor="messageId" className="form-label">
+                  Message ID:
+                </label>
+                <input
+                  type="text"
+                  id="messageId"
+                  className="form-control"
+                  value={messageId}
+                  onChange={(e) => setMessageId(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mt={3}>
+                <label htmlFor="transactionId" className="form-label">
+                  Transaction ID:
+                </label>
+                <input
+                  type="text"
+                  id="transactionId"
+                  className="form-control"
+                  value={transactionId}
+                  onChange={(e) => setTransactionId(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mt={3}>
+                <label htmlFor="date" className="form-label">
+                  Date (YYYY-MM-DD):
+                </label>
+                <input
+                  type="text"
+                  id="date"
+                  className="form-control"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mt={3}>
+                <label htmlFor="respondent" className="form-label">
+                  Respondent:
+                </label>
+                <input
+                  type="text"
+                  id="respondent"
+                  className="form-control"
+                  value={respondent}
+                  onChange={(e) => setRespondent(e.target.value)}
+                />
+              </MDBox>
+              <MDBox mt={3}>
+                <label htmlFor="reference" className="form-label">
+                  Reference:
+                </label>
+                <input
+                  type="text"
+                  id="reference"
+                  className="form-control"
+                  value={reference}
+                  onChange={(e) => setReference(e.target.value)}
+                />
+              </MDBox>
               <MDBox mt={3} mb={1}>
                 <MDButton
                   variant="gradient"
@@ -190,7 +265,7 @@ const DisputePage = () => {
                   Misdirected payment
                 </MDButton>
               </MDBox>
-              <MDBox mt={3} mb={1}>
+              <MDBox mt={3} mb={1} display="flex" alignItems="center">
                 <MDButton
                   variant="gradient"
                   color="info"
@@ -199,6 +274,16 @@ const DisputePage = () => {
                 >
                   Alias mobile number is used by the wrong customer
                 </MDButton>
+                {disputeType === "alias" && (
+                  <input
+                    type="text"
+                    placeholder="Enter alias text"
+                    value={aliasText}
+                    onChange={(e) => setAliasText(e.target.value)}
+                    className="form-control"
+                    style={{ marginLeft: "10px" }}
+                  />
+                )}
               </MDBox>
               <MDBox mt={3} mb={1}>
                 <label htmlFor="disputeSelect" className="form-label">
