@@ -148,22 +148,11 @@ const DisputePage = () => {
 
   return (
     <DashboardLayout>
-      <MDBox
-        className="container"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="100vh"
-      >
-        <Card style={{ width: "90%", padding: "20px" }} className="blue-background">
-          <MDBox textAlign="center" mb={2}>
-            <MDTypography variant="h4" color="white">
-              User Authentication and Dispute Request
-            </MDTypography>
-          </MDBox>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Card style={{ padding: "20px", backgroundColor: "white" }}>
+      <MDBox className="container">
+        <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "100vh" }}>
+          <Grid item xs={12} sm={8} md={6}>
+            <Card>
+              <MDBox p={3} textAlign="center">
                 <h1>User Authentication</h1>
                 <MDBox className="auth-form">
                   <label htmlFor="phoneNumber" className="form-label">
@@ -203,92 +192,94 @@ const DisputePage = () => {
                     </MDBox>
                   </MDBox>
                 </MDBox>
-              </Card>
-            </Grid>
-            {isDisputeSectionVisible && (
-              <Grid item xs={12}>
-                <Card style={{ padding: "20px", backgroundColor: "white" }} ref={disputeSectionRef}>
-                  <MDBox p={3} textAlign="center">
-                    <MDTypography variant="h4" color="red">
-                      Dispute Request
-                    </MDTypography>
-                    <MDBox mt={3}>
-                      <MDTypography variant="h6" color="red">
-                        Name: Lara Larvana
-                      </MDTypography>
-                    </MDBox>
-                    <MDBox mt={3} mb={1}>
-                      <MDButton
-                        variant="gradient"
-                        color="info"
-                        fullWidth
-                        onClick={() => handleDisputeTypeChange("beneficiary")}
-                      >
-                        Beneficiary account not credited
-                      </MDButton>
-                    </MDBox>
-                    <MDBox mt={3} mb={1}>
-                      <MDButton
-                        variant="gradient"
-                        color="info"
-                        fullWidth
-                        onClick={() => handleDisputeTypeChange("misdirected")}
-                      >
-                        Misdirected payment
-                      </MDButton>
-                    </MDBox>
-                    <MDBox mt={3} mb={1} display="flex" alignItems="center">
-                      <MDButton
-                        variant="gradient"
-                        color="info"
-                        fullWidth
-                        onClick={() => handleDisputeTypeChange("alias")}
-                      >
-                        Alias mobile number is used by the wrong customer
-                      </MDButton>
-                      {disputeType === "alias" && (
-                        <input
-                          type="text"
-                          placeholder="Enter alias text"
-                          value={aliasText}
-                          onChange={(e) => setAliasText(e.target.value)}
-                          className="form-control"
-                          style={{ marginLeft: "10px" }}
-                        />
-                      )}
-                    </MDBox>
-                    <MDBox mt={3} mb={1}>
-                      <label htmlFor="disputeSelect" className="form-label">
-                        Select Dispute
-                      </label>
-                      <select
-                        id="disputeSelect"
-                        className="form-control"
-                        onChange={handleDisputeChange}
-                        value={selectedDispute}
-                        disabled={isDropdownDisabled}
-                        style={{ width: "100%" }}
-                      >
-                        <option value="">-- Select Dispute --</option>
-                        {disputeOptions.map((option, index) => (
-                          <option key={index} value={option.MESSAGE_ID}>
-                            {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
-                          </option>
-                        ))}
-                      </select>
-                    </MDBox>
-                    <MDBox mt={3} mb={1}>
-                      <MDButton variant="gradient" color="info" fullWidth onClick={handleSubmit}>
-                        Submit
-                      </MDButton>
-                    </MDBox>
-                  </MDBox>
-                </Card>
-              </Grid>
-            )}
+              </MDBox>
+            </Card>
           </Grid>
-        </Card>
+        </Grid>
       </MDBox>
+      {isDisputeSectionVisible && (
+        <Grid container justifyContent="center" alignItems="center" style={{ minHeight: "100vh" }}>
+          <Grid item xs={12} sm={8} md={6}>
+            <Card>
+              <MDBox p={3} textAlign="center" ref={disputeSectionRef}>
+                <MDTypography variant="h2" color="Red">
+                  Dispute Request
+                </MDTypography>
+                <MDBox mt={3}>
+                  <MDTypography variant="h7" color="Red">
+                    Name: Lara Larvana
+                  </MDTypography>
+                </MDBox>
+                <MDBox mt={3} mb={1}>
+                  <MDButton
+                    variant="gradient"
+                    color="info"
+                    fullWidth
+                    onClick={() => handleDisputeTypeChange("beneficiary")}
+                  >
+                    Beneficiary account not credited
+                  </MDButton>
+                </MDBox>
+                <MDBox mt={3} mb={1}>
+                  <MDButton
+                    variant="gradient"
+                    color="info"
+                    fullWidth
+                    onClick={() => handleDisputeTypeChange("misdirected")}
+                  >
+                    Misdirected payment
+                  </MDButton>
+                </MDBox>
+                <MDBox mt={3} mb={1} display="flex" alignItems="center">
+                  <MDButton
+                    variant="gradient"
+                    color="info"
+                    fullWidth
+                    onClick={() => handleDisputeTypeChange("alias")}
+                  >
+                    Alias mobile number is used by the wrong customer
+                  </MDButton>
+                  {disputeType === "alias" && (
+                    <input
+                      type="text"
+                      placeholder="Enter alias text"
+                      value={aliasText}
+                      onChange={(e) => setAliasText(e.target.value)}
+                      className="form-control"
+                      style={{ marginLeft: "10px" }}
+                    />
+                  )}
+                </MDBox>
+                <MDBox mt={3} mb={1}>
+                  <label htmlFor="disputeSelect" className="form-label">
+                    Select Dispute
+                  </label>
+                  <select
+                    id="disputeSelect"
+                    className="form-control"
+                    onChange={handleDisputeChange}
+                    value={selectedDispute}
+                    disabled={isDropdownDisabled}
+                    style={{ width: "100%" }}
+                  >
+                    <option value="">-- Select Dispute --</option>
+                    {disputeOptions.map((option, index) => (
+                      <option key={index} value={option.MESSAGE_ID}>
+                        {option.MESSAGE_ID} - {option.RESULT_DESCRIPTION}
+                      </option>
+                    ))}
+                  </select>
+                </MDBox>
+                <MDBox mt={3} mb={1}>
+                  <MDButton variant="gradient" color="info" fullWidth onClick={handleSubmit}>
+                    Submit
+                  </MDButton>
+                </MDBox>
+              </MDBox>
+            </Card>
+          </Grid>
+        </Grid>
+      )}
       <Modal
         open={errorModalOpen}
         onClose={handleCloseModal}
