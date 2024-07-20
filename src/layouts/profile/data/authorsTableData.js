@@ -41,7 +41,7 @@ const data = () => {
     // Mock data simulating API response
     const mockData = [
       {
-        author: { image: team4, name: "Ibrahim Abu Laban", email: "079 9 24 2452" },
+        author: { image: team4, name: "Rashid Alnaji", email: "079 9 24 2452" },
         function: { title: "Motaz Ghassan", description: "Agent" },
         status: "Active",
         employed: "04/07/2024",
