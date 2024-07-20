@@ -21,8 +21,9 @@ import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import { useState, useEffect } from "react";
-import { Menu, MenuItem, IconButton } from "@mui/material";
+import { Menu, MenuItem, IconButton, TextField, Button, Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 // Images
 import team1 from "assets/images/team-1.png";
@@ -33,6 +34,8 @@ const data = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedRow, setSelectedRow] = useState(null);
   const [rows, setRows] = useState([]);
+  const [replyText, setReplyText] = useState("");
+  const [replyRow, setReplyRow] = useState(null);
 
   useEffect(() => {
     // Mock data simulating API response
@@ -69,15 +72,54 @@ const data = () => {
     setSelectedRow(null);
   };
 
-  const Author = ({ image, name, email }) => (
-    <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDAvatar src={image} name={name} size="sm" />
-      <MDBox ml={2} lineHeight={1}>
-        <MDTypography display="block" variant="button" fontWeight="medium">
-          {name}
-        </MDTypography>
-        <MDTypography variant="caption">{email}</MDTypography>
+  const handleReplyClick = (index) => {
+    setReplyRow(replyRow === index ? null : index);
+  };
+
+  const handleReplySubmit = () => {
+    if (replyRow !== null) {
+      const updatedRows = [...rows];
+      updatedRows[replyRow].status = "Replied";
+      setRows(updatedRows);
+      setReplyText("");
+      setReplyRow(null);
+    }
+  };
+
+  const Author = ({ image, name, email, index }) => (
+    <MDBox display="flex" flexDirection="column" alignItems="flex-start" lineHeight={1}>
+      <MDBox display="flex" alignItems="center">
+        <IconButton size="small" onClick={() => handleReplyClick(index)}>
+          <ArrowDropDownIcon />
+        </IconButton>
+        <MDAvatar src={image} name={name} size="sm" />
+        <MDBox ml={2} lineHeight={1}>
+          <MDTypography display="block" variant="button" fontWeight="medium">
+            {name}
+          </MDTypography>
+          <MDTypography variant="caption">{email}</MDTypography>
+        </MDBox>
       </MDBox>
+      {replyRow === index && (
+        <MDBox mt={2} display="flex" flexDirection="column" alignItems="flex-start" width="100%">
+          <TextField
+            label="Reply"
+            variant="outlined"
+            size="small"
+            fullWidth
+            value={replyText}
+            onChange={(e) => setReplyText(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleReplySubmit}
+            sx={{ mt: 1, color: "white !important" }}
+          >
+            Reply
+          </Button>
+        </MDBox>
+      )}
     </MDBox>
   );
 
@@ -105,7 +147,7 @@ const data = () => {
     ],
 
     rows: rows.map((row, index) => ({
-      author: <Author {...row.author} />,
+      author: <Author {...row.author} index={index} />,
       function: <Job {...row.function} />,
       status: (
         <MDBox ml={-1}>
@@ -128,9 +170,10 @@ const data = () => {
             <MoreVertIcon />
           </IconButton>
           <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => handleMenuClose(null)}>
+            <MenuItem onClick={() => handleMenuClose("Assigned")}>Assign</MenuItem>
             <MenuItem onClick={() => handleMenuClose("Resolved")}>Resolve</MenuItem>
+            <MenuItem onClick={() => handleMenuClose("Subscribed")}>Subscribed</MenuItem>
             <MenuItem onClick={() => handleMenuClose("Declined")}>Decline</MenuItem>
-            <MenuItem onClick={() => handleMenuClose("Resigned")}>Resign</MenuItem>
             <MenuItem onClick={() => handleMenuClose("Replied")}>Reply</MenuItem>
           </Menu>
         </>
