@@ -17,6 +17,11 @@
     width: 100%;
     max-width: 400px;
   }
+  .blue-background {
+    background-color: #2196f3; /* Adjust the color code to match your desired blue shade */
+    color: white; /* This ensures that the text color is white */
+  }
+  
   
   .option-button {
     width: 100%;
