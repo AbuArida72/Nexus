@@ -39,7 +39,7 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Cases from "layouts/cases";
 import Disputes from "layouts/profile";
-import SignIn from "layouts/authentication/sign-in";
+import Call from "layouts/call";
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -70,11 +70,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Sign In",
-    key: "sign-in",
+    name: "Call Log",
+    key: "call",
     icon: <Icon fontSize="small">login</Icon>,
-    route: "/authentication/sign-in",
-    component: <SignIn />,
+    route: "/call",
+    component: <Call />,
   },
 ];
 

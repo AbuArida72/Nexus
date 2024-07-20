@@ -89,7 +89,14 @@ const data = () => {
   const Author = ({ image, name, email, index }) => (
     <MDBox display="flex" flexDirection="column" alignItems="flex-start" lineHeight={1}>
       <MDBox display="flex" alignItems="center">
-        <IconButton size="small" onClick={() => handleReplyClick(index)}>
+        <IconButton
+          size="small"
+          onClick={() => handleReplyClick(index)}
+          sx={{
+            transform: replyRow === index ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.3s",
+          }}
+        >
           <ArrowDropDownIcon />
         </IconButton>
         <MDAvatar src={image} name={name} size="sm" />
@@ -101,7 +108,15 @@ const data = () => {
         </MDBox>
       </MDBox>
       {replyRow === index && (
-        <MDBox mt={2} display="flex" flexDirection="column" alignItems="flex-start" width="100%">
+        <MDBox
+          mt={2}
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-start"
+          width="calc(100% - 48px)"
+          position="relative"
+          left="48px"
+        >
           <TextField
             label="Reply"
             variant="outlined"
@@ -174,7 +189,6 @@ const data = () => {
             <MenuItem onClick={() => handleMenuClose("Resolved")}>Resolve</MenuItem>
             <MenuItem onClick={() => handleMenuClose("Subscribed")}>Subscribed</MenuItem>
             <MenuItem onClick={() => handleMenuClose("Declined")}>Decline</MenuItem>
-            <MenuItem onClick={() => handleMenuClose("Replied")}>Reply</MenuItem>
           </Menu>
         </>
       ),
