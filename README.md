@@ -4,7 +4,7 @@ Welcome to the Dispute Management Bank System repository! This project is design
 Project Overview
 
 The Dispute Management Bank System is a web application that provides functionalities for managing disputes. Though the project is not fully completed and is currently on hold, it serves as a solid foundation for future development.
-- Key Features
+- Key Features:
   - Dashboard: A central overview page displaying key metrics and information.
   - Register Disputes: A form page to initiate new disputes.
   - Active Disputes: A page listing all ongoing disputes.
