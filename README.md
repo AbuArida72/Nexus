@@ -1,4 +1,4 @@
-#Dispute Management Bank System
+# Dispute Management Bank System
 
 Welcome to the Dispute Management Bank System repository! This project is designed as a web portal for managing disputes within a banking environment. The system is built with React.js and includes multiple pages for handling various aspects of dispute management.
 Project Overview
@@ -11,7 +11,7 @@ Key Features
     Sign In: A secure page for user authentication.
     Call Logo Page: A placeholder page related to call functionality (details are to be implemented).
 
-##Installation
+## Installation
 
 To get started with this project, you'll need to clone the repository and set up the development environment.
 
@@ -26,40 +26,40 @@ Ensure you have Node.js installed. Then, install the required npm packages:
 
     npm install
 
-Start the Development Server
+## Start the Development Server
 
 To run the project locally, use:
 
     npm start
 
-    This will start the React development server and open the application in your default web browser.
+This will start the React development server and open the application in your default web browser.
 
-##Project Structure
+## Project Structure
 
-    src/: Contains the source code for the application.
-        components/: Reusable components used across different pages.
-        pages/: Page components for Dashboard, Register Disputes, Active Disputes, Sign In, and Call Logo.
-        App.js: Main component that sets up routing for the application.
-        index.js: Entry point for the React application.
-    public/: Static assets and HTML template.
+src/: Contains the source code for the application.
+    -components/: Reusable components used across different pages.
+    -pages/: Page components for Dashboard, Register Disputes, Active Disputes, Sign In, and Call Logo.
+    -App.js: Main component that sets up routing for the application.
+    -index.js: Entry point for the React application.
+public/: Static assets and HTML template.
 
-##Current Status
+## Current Status
 
 This project is a work in progress and is currently on hold. The following features are incomplete or not yet fully implemented:
-    Integration with backend services.
-    Complete user authentication and authorization.
-    Detailed dispute management functionality.
-    Finalization of the Call Logo Page.
+    -Integration with backend services.
+    -Complete user authentication and authorization.
+    -Detailed dispute management functionality.
+    - Finalization of the Call Logo Page.
 
-##Future Work
+## Future Work
 
 Future updates will include:
-    Completing and testing all functionalities.
-    Integrating with backend APIs for dispute management.
-    Enhancing user interface and user experience.
-    Implementing additional features based on user feedback.
+    -Completing and testing all functionalities.
+    -Integrating with backend APIs for dispute management.
+    -Enhancing user interface and user experience.
+    -Implementing additional features based on user feedback.
 
-##Contributing
+## Contributing
 
 Contributions are welcome! If you want to help with development or suggest improvements, please follow these steps:
     Fork the repository.
@@ -67,7 +67,7 @@ Contributions are welcome! If you want to help with development or suggest impro
     Make your changes and test them.
     Submit a pull request with a description of your changes.
 
-##License
+## License
 
 This project is licensed under the MIT License.
 Contact
