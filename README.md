@@ -70,6 +70,5 @@ Contributions are welcome! If you want to help with development or suggest impro
 ## License
 
 This project is licensed under the MIT License.
-Contact
 
-### Thank you for your interest in the Dispute Management Bank System!
+#### Thank you for your interest in the Dispute Management Bank System!
